@@ -1,0 +1,20 @@
+import nltk 
+from nltk import pos_tag 
+from nltk.tokenize import word_tokenize 
+def ensure(): 
+try: 
+pos_tag(["test"]) 
+word_tokenize("hi") 
+except LookupError: 
+nltk.download('punkt') 
+nltk.download('averaged_perceptron_tagger') 
+try: 
+nltk.download('averaged_perceptron_tagger_eng') 
+except:  # older nltk 
+pass 
+def tag(text): 
+ensure() 
+tokens = word_tokenize(text) 
+return pos_tag(tokens) 
+if __name__ == "__main__": 
+txt = "The quick brown fox jumps over the lazy dog."
